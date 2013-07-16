@@ -1,13 +1,21 @@
+#!/usr/bin/env node
+
+var fs      = require('fs');
 var express = require('express');
+
 var app = express.createServer(express.logger());
+var filename = "index.html";
+var mybuffer = new Buffer();
+var mystring;
+
+mybuffer = new Buffer(fs.readFileSync(index.html));
+mystring = mybuffer.toString();
 
 app.get('/', function(request, response) {
-var fs = require('fs');
-var buffer = new buffer ();
-  response.send(buffer.toString('utc 8', fs.readFileSync("index.html")))});
- });
+  response.send(mystring);
+});
 
 var port = process.env.PORT || 5000;
 app.listen(port, function() {
-console.log("Listening on " + port);
+  console.log("Listening on " + port);
 });
